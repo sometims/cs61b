@@ -1,0 +1,1 @@
+String与String值相等比较用equals()方法，char与char值相等比较用”==”进行比较。

@@ -18,7 +18,10 @@ extend:继承是is-a 关系,a继承b,这表明a is a b.
 		  向上造型：父类引用指向子类实例（A是父类，a是子类）
 		  	  A x = new a；//x这个父类引用指向一个子类的实例
 			  这样的变量可以使用父类的一切，并且可以使用子类中重写父类的方法，达到了既可以通用又可以使用子类特性方法。
-		 casting：
+		 casting：强制转换，发生在继承之间
+		 	  比如：dog和monkey都是animal的subclass；
+			  	Monkey orangutan = new Monkey("fruitful");
+ 			        Dog mangotan = (Dog)(Animal) orangutan;//先将orangutan向上转型，因为monkey是animal的子类，然后强制将animal父类casting成子类dog.
 inheritance cheapsheet：
 	 husky extends dog means husky "is-an" dog, and inherits all of SLList's members:
 		Variables, methods nested classes
@@ -27,5 +30,7 @@ inheritance cheapsheet：
 		Compiler plays it safe and only allows us to do things according to the static type.
 		For overridden methods (not overloaded methods), the actual method invoked is based on the dynamic type of the invoking expression.//如果子类覆盖了父类的一个方法，那么在动态方法选择时就会选择子类的方法。也就是说，方法选择是取决于动态类型的。
 		Can use casting to overrule compiler type checking.//
+多态：
+	在Java中，多态性指的是对象如何具有多种形式或类型。
 
 

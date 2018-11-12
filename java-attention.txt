@@ -8,18 +8,24 @@ String与String值相等比较用equals()方法，char与char值相等比较用�
 extend:继承是is-a 关系,a继承b,这表明a is a b.
 
 子类和父类：
-	1）如果子类覆盖了父类的一个方法，那么在动态方法选择时就会选择子类的方法。也就是说，方法选择是取决于动态类型的。
+	但是如果子类构造函数拥有参数的话，那么需要手动触发super（）构造函数，括号内加入参数）；并且无法访问父类的私人变量。
+	
+	子类中调用父类的方法，需要使用super.前缀（注意打点）。子类中命名和父类同名的函数，需要加上@override前缀以此来重写函数。
 
-	2）类型检测：
-		编译时期，编译器检查实例的静态类型，如果实例调用一个静态类型没有的方法，那么他将无法通过编译。
-		举例：a是A的一个子类，在a中自定义了一个方法m，则：
-		A x = new a；
-		a.m；
-		第二行代码将无法通过编译，编译时编译器首先检查静态类型方法，因为m方法并不存在于A中，所以无法通过，尽管
-xde动态类型是a。
-	3）实例的动态类型不会是静态类型的父类，如果是，那么将无法通过编译。以上述例子证明：
-		a x = new A；这是无法通过编译的；
-		或者
-		A x = new a；
-		a y = new x；
-		这依然无法通过编译，因为在编译y的时刻，y的静态类型是a，x的静态类型是A，这是不允许的。 
+	所有类都是object类的子类。
+			
+	3）类型检测和造型：
+		  向上造型：父类引用指向子类实例（A是父类，a是子类）
+		  	  A x = new a；//x这个父类引用指向一个子类的实例
+			  这样的变量可以使用父类的一切，并且可以使用子类中重写父类的方法，达到了既可以通用又可以使用子类特性方法。
+		 casting：
+inheritance cheapsheet：
+	 husky extends dog means husky "is-an" dog, and inherits all of SLList's members:
+		Variables, methods nested classes
+		Not constructors Subclass constructors must invoke superclass constructor first. The super keyword can be used to invoke overridden superclass methods and constructors.//子类没有继承父类的构造函数,但是java自动会在子类的构造函数中调用父类的构造函数super.			
+	Invocation of overridden methods follows two simple rules:
+		Compiler plays it safe and only allows us to do things according to the static type.
+		For overridden methods (not overloaded methods), the actual method invoked is based on the dynamic type of the invoking expression.//如果子类覆盖了父类的一个方法，那么在动态方法选择时就会选择子类的方法。也就是说，方法选择是取决于动态类型的。
+		Can use casting to overrule compiler type checking.//
+
+
